@@ -6,12 +6,22 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct PJFCloneApp: App {
+    
+    init() {
+        FirebaseApp.configure()
+        print("Firebase configured")
+    }
+    
+    @StateObject var manager = WorkoutsManager()
+    
     var body: some Scene {
         WindowGroup {
-            InformationWithSelectionView()
+            ContentView(manager: manager)
+//            InformationWithSelectionView()
         }
     }
 }
